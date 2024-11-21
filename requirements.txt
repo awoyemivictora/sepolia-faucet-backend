@@ -3,6 +3,7 @@ celery==5.3.1
 fastapi==0.100.0
 httptools==0.5.0
 python-dotenv==1.0.0
+redis==4.5.5
 requests==2.25.1
 uvicorn==0.23.2
 websocket-client==1.8.0
