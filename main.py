@@ -74,6 +74,9 @@ def verify_recaptcha(captcha_response: str) -> bool:
     result = response.json()
     return result.get('success', False)
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Ethereum Faucet API!"}
 
 @app.post("/faucet")
 async def send_eth(request: FaucetRequest):
