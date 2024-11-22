@@ -49,8 +49,17 @@ app.add_middleware(
     allow_headers=["*"], # Allows all headers
 )
 
-# Initialize Redis client to store the wallet request time even after the app restarts
-r = redis.StrictRedis(host='localhost', port=6379, db=0, decode_responses=True)
+# Fetch the Redis URL from the environmentt
+redis_url = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+
+# Connect to Redis
+r = redis.from_url(redis_url)
+
+try:
+    r.ping() # Test redis connection
+    print("Connected to Redis!")
+except redis.ConnectionError as e:
+    print("Redis connection failed:", e)
 
 # Google reCAPTCHA secret key
 RECAPTCHA_SECRET_KEY = os.getenv("RECAPTCHA_SECRET_KEY")
