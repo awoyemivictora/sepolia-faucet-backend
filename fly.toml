@@ -1,0 +1,6 @@
+# fly.toml file for a FastAPI app
+app = "sepolia-faucet"  # Your app name
+primary_region = "iad"   # Set your primary region
+
+[build]
+dockerfile = "./Dockerfile"  # Path to your Dockerfile (if needed)
